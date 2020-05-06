@@ -1,14 +1,80 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
+import React from 'react'
+import {combineReducers, createStore, applyMiddleware, compose} from 'redux'
+import reduceReducers from 'reduce-reducers'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
+import { render } from 'react-dom'
+import { createBrowserHistory } from 'history'
+import Breezy from '@jho406/breezy'
+import Nav from '@jho406/breezy/dist/NavComponent'
+import ujsHandlers from '@jho406/breezy/dist/utils/ujs'
+import applicationReducer from './reducer'
 
 
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
+// Mapping between your props template to Component
+// e.g {'posts/new': PostNew}
+const identifierToComponentMapping = {
+}
 
-import "controllers"
+const history = createBrowserHistory({})
+const initialPage = window.BREEZY_INITIAL_PAGE_STATE
+const baseUrl = ''
+
+const {reducer, initialState, initialPageKey, connect} = Breezy.start({
+  window,
+  initialPage,
+  baseUrl,
+  history
+})
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const {
+  breezy: breezyReducer,
+  pages: pagesReducer,
+} = reducer
+
+const store = createStore(
+  combineReducers({
+    breezy: breezyReducer,
+    pages: reduceReducers(pagesReducer, applicationReducer),
+  }),
+  initialState,
+  composeEnhancers(applyMiddleware(thunk))
+)
+
+connect(store)
+
+const navigatorRef = React.createRef()
+
+class App extends React.Component {
+  render() {
+    //The Nav is bare bones
+    //Feel free to replace the implementation
+    return <Provider store={store}>
+      <Nav
+        store={store}
+        ref={navigatorRef}
+        mapping={this.props.mapping}
+        history={history}
+        initialPageKey={initialPageKey}
+      />
+    </Provider>
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const appEl = document.getElementById('app')
+  if (appEl) {
+    const {onClick, onSubmit} = ujsHandlers({
+      navigatorRef,
+      store,
+      ujsAttributePrefix: 'data-bz'
+    })
+
+    appEl.addEventListener('click', onClick)
+    appEl.addEventListener('submit', onSubmit)
+
+    render(<App mapping={identifierToComponentMapping} />, appEl)
+  }
+})
