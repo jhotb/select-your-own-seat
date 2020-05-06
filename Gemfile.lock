@@ -61,6 +61,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
+    breezy (0.16.0)
+      actionpack (>= 6.0.0)
+      props_template (= 0.16.0)
+      webpacker (>= 3.0)
     builder (3.2.4)
     byebug (11.1.1)
     capybara (3.31.0)
@@ -102,7 +106,12 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    oj (3.10.8)
     pg (1.2.3)
+    props_template (0.16.0)
+      actionview (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      oj (>= 3.9)
     public_suffix (4.0.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -201,6 +210,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  breezy (= 0.16)
   byebug
   capybara (>= 2.15)
   jbuilder (~> 2.7)
