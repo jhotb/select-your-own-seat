@@ -9,11 +9,12 @@ import Breezy from '@jho406/breezy'
 import Nav from '@jho406/breezy/dist/NavComponent'
 import ujsHandlers from '@jho406/breezy/dist/utils/ujs'
 import applicationReducer from './reducer'
-
+import SeatsIndex from 'views/seats/index'
 
 // Mapping between your props template to Component
 // e.g {'posts/new': PostNew}
 const identifierToComponentMapping = {
+  'seats/index': SeatsIndex
 }
 
 const history = createBrowserHistory({})
