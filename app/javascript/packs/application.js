@@ -13,12 +13,16 @@ import storage from 'redux-persist/lib/storage'
 import { applicationRootReducer, applicationPagesReducer } from './reducer'
 import { buildVisitAndRemote } from './application_visit'
 
+import { applicationRootReducer, applicationPagesReducer } from './reducer'
+import { buildVisitAndRemote } from './application_visit'
+import SeatsIndex from 'views/seats/index'
 // Mapping between your props template to Component, you must add to this
 // to register any new page level component you create. If you are using the
 // scaffold, it will auto append the identifers for you.
 //
 // e.g {'posts/new': PostNew}
 const identifierToComponentMapping = {
+  'seats/index': SeatsIndex
 }
 
 const history = createBrowserHistory({})
