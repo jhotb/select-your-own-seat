@@ -12,6 +12,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { applicationRootReducer, applicationPagesReducer } from './reducer'
 import { buildVisitAndRemote } from './application_visit'
+import SeatsIndex from 'views/seats/index'
 
 if(typeof window !== 'undefined' ) {
   document.addEventListener("DOMContentLoaded", function() {
@@ -46,6 +47,7 @@ export default class Application extends React.Component {
     //
     // e.g {'posts/new': PostNew}
     this.identifierToComponentMapping = {
+      'seats/index': SeatsIndex
     }
 
     // Create a navigator Ref for UJS attributes and to enhance the base `visit`
