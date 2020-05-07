@@ -14,7 +14,8 @@ import SeatsIndex from 'views/seats/index'
 // Mapping between your props template to Component
 // e.g {'posts/new': PostNew}
 const identifierToComponentMapping = {
-  'seats/index': SeatsIndex
+  'seats/index': SeatsIndex,
+  'seats/show': SeatsIndex,
 }
 
 const history = createBrowserHistory({})

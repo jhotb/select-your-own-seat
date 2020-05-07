@@ -2,16 +2,22 @@ import React from 'react'
 import {mapStateToProps, mapDispatchToProps} from '@jho406/breezy'
 import {connect} from 'react-redux'
 import BaseScreen from 'components/BaseScreen'
+import SeatDialog from 'components/SeatDialog'
 import Layout from 'components/Layout'
 import * as applicationActionCreators from 'javascript/packs/action_creators'
 
 const buildSectionElements = (sections) => {
   return sections.map((section) => {
-    const seatElements = section.seats.map(({x, y}) => (
-      <svg width="12px" height="12px" viewBox="0 0 24 24" x={x} y={y}>
-        <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
-        <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
-      </svg>
+    const seatElements = section.seats.map((seat) => (
+      <a
+        href={seat.venueFloorSeatPath}
+        aria-label={seat.ariaLabel}
+       >
+        <svg width="12px" height="12px" viewBox="0 0 24 24" x={seat.x} y={seat.y}>
+          <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
+          <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
+        </svg>
+      </a>
     ))
 
     return <g>{seatElements}</g>
@@ -23,12 +29,14 @@ class SeatsIndex extends BaseScreen {
     const {
       venueName,
       sections,
+      seat
     } = this.props
 
     const sectionElements = buildSectionElements(sections)
 
     return (
       <Layout {...this.props}>
+        <SeatDialog {...seat} />
         <header className="syos-site-frame__header syos-site-header">
           <p className="syos-site-header__subtext">
             {venueName}
