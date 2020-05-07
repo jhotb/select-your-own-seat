@@ -47,7 +47,8 @@ export default class Application extends React.Component {
     //
     // e.g {'posts/new': PostNew}
     this.identifierToComponentMapping = {
-      'seats/index': SeatsIndex
+      'seats/index': SeatsIndex,
+      'seats/show': SeatsIndex,
     }
 
     // Create a navigator Ref for UJS attributes and to enhance the base `visit`
