@@ -22,7 +22,8 @@ import SeatsIndex from 'views/seats/index'
 //
 // e.g {'posts/new': PostNew}
 const identifierToComponentMapping = {
-  'seats/index': SeatsIndex
+  'seats/index': SeatsIndex,
+  'seats/show': SeatsIndex,
 }
 
 const history = createBrowserHistory({})
