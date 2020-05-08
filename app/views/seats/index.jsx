@@ -5,6 +5,7 @@ import SeatDialog from 'components/SeatDialog'
 import Cart from 'components/Cart'
 import SeatingMap from 'components/SeatingMap'
 import SeatingLegend from 'components/SeatingLegend'
+import FloorSwitcher from 'components/FloorSwitcher'
 import Layout from 'components/Layout'
 import * as applicationActionCreators from 'javascript/packs/action_creators'
 
@@ -35,7 +36,8 @@ class SeatsIndex extends React.Component {
       venueName,
       sections,
       seat,
-      cart
+      cart,
+      floors,
     } = this.props
 
     return (
@@ -52,6 +54,7 @@ class SeatsIndex extends React.Component {
             className="syos-frame"
           >
             <div className="syos-frame__map">
+              <FloorSwitcher floors={floors}/>
               <SeatingLegend />
               <SeatingMap sections={sections} />
             </div>
