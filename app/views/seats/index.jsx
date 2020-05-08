@@ -5,6 +5,7 @@ import BaseScreen from 'components/BaseScreen'
 import SeatDialog from 'components/SeatDialog'
 import Cart from 'components/Cart'
 import SeatingMap from 'components/SeatingMap'
+import SeatingLegend from 'components/SeatingLegend'
 import Layout from 'components/Layout'
 import * as applicationActionCreators from 'javascript/packs/action_creators'
 
@@ -31,6 +32,7 @@ class SeatsIndex extends BaseScreen {
             className="syos-frame"
           >
             <div className="syos-frame__map">
+              <SeatingLegend />
               <SeatingMap sections={sections} />
             </div>
             <div className="syos-frame__sidebar">
@@ -38,7 +40,6 @@ class SeatsIndex extends BaseScreen {
             </div>
           </section>
         </main>
-
       </Layout>
     )
   }
