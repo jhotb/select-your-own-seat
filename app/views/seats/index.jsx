@@ -3,6 +3,7 @@ import {mapStateToProps, mapDispatchToProps} from '@jho406/breezy'
 import {connect} from 'react-redux'
 import SeatDialog from 'components/SeatDialog'
 import Cart from 'components/Cart'
+import SeatFilter from 'components/SeatFilter'
 import SeatingMap from 'components/SeatingMap'
 import SeatingLegend from 'components/SeatingLegend'
 import FloorSwitcher from 'components/FloorSwitcher'
@@ -38,6 +39,7 @@ class SeatsIndex extends React.Component {
       seat,
       cart,
       floors,
+      filters,
     } = this.props
 
     return (
@@ -59,6 +61,7 @@ class SeatsIndex extends React.Component {
               <SeatingMap sections={sections} />
             </div>
             <div className="syos-frame__sidebar">
+              <SeatFilter filters={filters} />
               <Cart cart={cart} />
             </div>
           </section>
