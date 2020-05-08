@@ -16,7 +16,7 @@ const buildSectionElements = (sections) => {
         <use
           width="12px"
           height="12px"
-          xlinkHref="#seat-icon-unselected"
+          xlinkHref={seat.href}
           x={seat.x}
           y={seat.y}
         />
@@ -70,6 +70,15 @@ class SeatsIndex extends React.Component {
                   >
                     <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
                     <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
+                  </symbol>
+
+                  <symbol
+                    id="seat-icon-selected"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
                   </symbol>
                 </svg>
                 { sectionElements }
