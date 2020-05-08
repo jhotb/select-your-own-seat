@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import BaseScreen from 'components/BaseScreen'
 import SeatDialog from 'components/SeatDialog'
 import Cart from 'components/Cart'
+import SeatFilter from 'components/SeatFilter'
 import SeatingMap from 'components/SeatingMap'
 import SeatingLegend from 'components/SeatingLegend'
 import FloorSwitcher from 'components/FloorSwitcher'
@@ -18,6 +19,7 @@ class SeatsIndex extends BaseScreen {
       seat,
       cart,
       floors,
+      filters,
     } = this.props
 
     return (
@@ -39,6 +41,7 @@ class SeatsIndex extends BaseScreen {
               <SeatingMap sections={sections} />
             </div>
             <div className="syos-frame__sidebar">
+              <SeatFilter filters={filters} />
               <Cart cart={cart} />
             </div>
           </section>
