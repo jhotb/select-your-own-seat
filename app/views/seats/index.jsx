@@ -13,10 +13,13 @@ const buildSectionElements = (sections) => {
         href={seat.venueFloorSeatPath}
         aria-label={seat.ariaLabel}
        >
-        <svg width="12px" height="12px" viewBox="0 0 24 24" x={seat.x} y={seat.y}>
-          <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
-          <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
-        </svg>
+        <use
+          width="12px"
+          height="12px"
+          xlinkHref="#seat-icon-unselected"
+          x={seat.x}
+          y={seat.y}
+        />
       </a>
     ))
 
@@ -58,8 +61,19 @@ class SeatsIndex extends React.Component {
                 viewBox="0 0 1600 1600"
               >
                 <rect fill="none" x="0" y="0" width="1600" height="1600"></rect>
-                { sectionElements }
+                <svg style={{display: "none"}}>
+                  <symbol
+                    id="seat-icon-unselected"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle fill="#37b24d" r="12" cx="12" cy="12"></circle>
+                    <circle fill="#ffffff" r="6" cx="12" cy="12"></circle>
+                  </symbol>
                 </svg>
+                { sectionElements }
+              </svg>
             </div>
 
             <div className="syos-frame__sidebar">
