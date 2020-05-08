@@ -11,11 +11,21 @@ json.seat do
   json.section_name seat.section.name
   json.row_number seat.row_number
   json.price number_to_currency(seat.section.price / 100.0)
-  json.seat_selections_button button_to(
-    "Select",
-    seat_selections_path(seat),
-    class: "syos-button",
-  )
+
+  if Current.cart.include?(seat)
+    json.seat_selections_button button_to(
+      "Remove",
+      seat_selection_path(seat),
+      method: :delete,
+      class: "syos-button",
+    )
+  else
+    json.seat_selections_button button_to(
+      "Select",
+      seat_selections_path(seat),
+      class: "syos-button",
+    )
+  end
   json.close_svg inline_svg_tag(
     "icons/x-circle.svg",
     aria: true,
