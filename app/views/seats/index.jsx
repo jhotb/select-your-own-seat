@@ -15,7 +15,7 @@ class SeatsIndex extends BaseScreen {
   render () {
     const {
       venueName,
-      sections,
+      seatingMap,
       seat,
       cart,
       floors,
@@ -38,7 +38,7 @@ class SeatsIndex extends BaseScreen {
             <div className="syos-frame__map">
               <FloorSwitcher floors={floors}/>
               <SeatingLegend />
-              <SeatingMap sections={sections} />
+              <SeatingMap {...seatingMap} />
             </div>
             <div className="syos-frame__sidebar">
               <SeatFilter {...filters} />
