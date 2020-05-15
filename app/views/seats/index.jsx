@@ -35,7 +35,7 @@ class SeatsIndex extends React.Component {
   render () {
     const {
       venueName,
-      sections,
+      seatingMap,
       seat,
       cart,
       floors,
@@ -58,7 +58,7 @@ class SeatsIndex extends React.Component {
             <div className="syos-frame__map">
               <FloorSwitcher floors={floors}/>
               <SeatingLegend />
-              <SeatingMap sections={sections} />
+              <SeatingMap {...seatingMap} />
             </div>
             <div className="syos-frame__sidebar">
               <SeatFilter {...filters} />
