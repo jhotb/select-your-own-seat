@@ -34,6 +34,8 @@ export default class extends React.Component {
   constructor (props) {
     super(props)
     this.svgRef = React.createRef()
+    this.zoomIn = this.zoomIn.bind(this)
+    this.zoomOut = this.zoomOut.bind(this)
   }
 
   componentDidMount() {
@@ -45,6 +47,14 @@ export default class extends React.Component {
       minZoom: 1.0,
       maxZoom: 8,
     })
+  }
+
+  zoomIn() {
+    this.map.zoomIn()
+  }
+
+  zoomOut() {
+    this.map.zoomOut()
   }
 
   componentWillUnmount() {
@@ -92,7 +102,11 @@ export default class extends React.Component {
           </svg>
           { sectionElements }
         </svg>
-        <SvgZoomControls {...zoomControls} />
+        <SvgZoomControls
+          {...zoomControls}
+          onZoomOut={this.zoomOut}
+          onZoomIn={this.zoomIn}
+        />
       </>
     )
   }

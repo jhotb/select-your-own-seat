@@ -6,6 +6,8 @@ export default class extends React.Component {
     const {
       zoomOutButton,
       zoomInButton,
+      onZoomOut,
+      onZoomIn,
     } = this.props
 
     return (
@@ -14,14 +16,14 @@ export default class extends React.Component {
           className="syos-button syos-button--transparent syos-control-zoom__button"
           type="button"
         >
-          <RailsTag html={zoomOutButton} />
+          <RailsTag html={zoomOutButton} onClick={onZoomOut}/>
         </button>
 
         <button
           className="syos-button syos-button--transparent syos-control-zoom__button"
           type="button"
         >
-          <RailsTag html={zoomInButton} />
+          <RailsTag html={zoomInButton} onClick={onZoomIn}/>
         </button>
       </div>
     )
