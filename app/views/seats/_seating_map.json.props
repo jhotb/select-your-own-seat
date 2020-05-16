@@ -16,6 +16,11 @@ json.zoom_controls do
   )
 end
 
+json.loading_icon inline_svg_tag(
+  "icons/loader.svg",
+  class: "syos-icon syos-icon--xlarge syos-loader-overlay__loader",
+)
+
 json.sections do
   json.array! sections do |section|
     if params.fetch(:maximum, Float::INFINITY).to_f >= section.price
