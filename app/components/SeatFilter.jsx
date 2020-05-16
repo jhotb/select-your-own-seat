@@ -19,8 +19,7 @@ export default class extends React.Component {
             type="radio"
             name="maximum"
             value={maximum}
-            ref={React.createRef()}
-            onChange={(event) => onFilter(event, maximum)}
+            onClick={(event) => onFilter(event, maximum)}
           />
           <label className="syos-tile-controls__control" htmlFor={`filter-${maximum}`}>
             <RailsTag html={ uncheckedSvg } />
