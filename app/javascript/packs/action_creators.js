@@ -16,12 +16,13 @@ import {
   TOGGLE_MAP_LOADING,
   SET_MAXIMUM,
 } from './actions'
+import { urlToPageKey } from '@jho406/breezy'
 
 export function setMaximum(pageKey, maximum) {
   return {
     type: SET_MAXIMUM,
     payload: {
-      pageKey,
+      pageKey: urlToPageKey(pageKey),
       maximum
     }
   }

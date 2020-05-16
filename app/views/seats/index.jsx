@@ -18,8 +18,20 @@ class SeatsIndex extends BaseScreen {
   }
 
   handleFilter(event, maximum) {
-    this.props.setMaximum(this.props.pageKey, maximum)
     event.stopPropagation()
+    const nextUrl = new URL(document.location)
+
+    if (maximum !== Infinity) {
+      nextUrl.searchParams.set("maximum", maximum)
+      this.props.copyPage({from: this.props.pageKey, to: nextUrl.href})
+      this.props.setMaximum(nextUrl.href, maximum)
+      this.props.navigateTo(nextUrl.href)
+    } else {
+      nextUrl.searchParams.delete("maximum")
+      this.props.navigateTo(this.props.pageKey, {
+        action: 'replace'
+      })
+    }
   }
 
   render () {
