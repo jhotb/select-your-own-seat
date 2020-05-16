@@ -1,6 +1,7 @@
 import React from 'react'
 import svgPanZoom from 'svg-pan-zoom'
 import SvgZoomControls from 'components/SvgZoomControls'
+import RailsTag from '@jho406/breezy/dist/RailsTag'
 
 const buildSectionElements = (sections) => {
   return sections.map((section) => {
@@ -71,11 +72,18 @@ export default class extends React.Component {
     const {
       sections,
       zoomControls,
+      loadingIcon
     } = this.props
     const sectionElements = buildSectionElements(sections)
 
     return(
       <>
+        <div
+          className="syos-frame__map-overlay syos-loader-overlay is-loading"
+          aria-hidden="true"
+        >
+          <RailsTag html={loadingIcon} />
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
