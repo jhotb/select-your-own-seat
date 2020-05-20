@@ -1,3 +1,5 @@
+json.floor floor.name
+
 json.zoom_controls do
   json.zoom_in_button inline_svg_tag(
     "icons/plus.svg",
