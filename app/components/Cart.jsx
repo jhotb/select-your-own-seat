@@ -3,14 +3,12 @@ import RailsTag from '@jho406/breezy/dist/RailsTag'
 
 export default class extends React.Component {
   render () {
-    const cartItems = this.props.cart.map(({rowNumber, price, removeSvg, id}) => (
+    const cartItems = this.props.cart.map(({rowNumber, price, removeButton, id}) => (
       <tr key={id}>
         <td> {rowNumber} </td>
         <td className="syos-table__cell--numerals"> {price} </td>
         <td className="syos-u-text-align-right">
-          <button className="syos-button syos-button--transparent">
-            <RailsTag html={ removeSvg } />
-          </button>
+          <RailsTag html={ removeButton } />
         </td>
       </tr>
     ))
