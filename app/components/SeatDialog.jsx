@@ -68,7 +68,7 @@ export default class extends React.Component {
             </div>
 
             <div className="syos-inline-stack__item" >
-              <RailsTag html={ seatSelectionsButton } />
+              <RailsTag html={ seatSelectionsButton } data-bz-visit={true}/>
             </div>
           </div>
         </footer>
