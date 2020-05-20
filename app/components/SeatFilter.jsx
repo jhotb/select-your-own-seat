@@ -33,7 +33,7 @@ export default class extends React.Component {
 
 
     return (
-      <form {...formProps}>
+      <form {...formProps} onReset={(event) => onFilter(event, Infinity)}>
         <fieldset className="syos-u-margin-bottom-6">
           <legend className="syos-u-margin-bottom-2 syos-inline-stack">
             <h2 className="syos-inline-stack__item">
