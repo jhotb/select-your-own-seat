@@ -9,6 +9,7 @@ const buildSectionElements = (sections) => {
       <a
         href={seat.venueFloorSeatPath}
         aria-label={seat.ariaLabel}
+        data-bz-visit={true}
        >
         <use
           width="12px"

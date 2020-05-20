@@ -9,7 +9,7 @@ export default class extends React.Component {
         <td className="syos-table__cell--numerals"> {price} </td>
         <td className="syos-u-text-align-right">
           <button className="syos-button syos-button--transparent">
-            <RailsTag html={ removeButton } />
+            <RailsTag html={ removeButton } data-bz-visit={true}/>
           </button>
         </td>
       </tr>
