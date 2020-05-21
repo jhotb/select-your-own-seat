@@ -5,7 +5,8 @@ export default class extends React.Component {
   render () {
     const {
       controls,
-      formProps
+      formProps,
+      onFilter,
     } = this.props
 
 
@@ -19,6 +20,7 @@ export default class extends React.Component {
             name="maximum"
             value={maximum}
             ref={React.createRef()}
+            onChange={(event) => onFilter(event, maximum)}
           />
           <label className="syos-tile-controls__control" htmlFor={`filter-${maximum}`}>
             <RailsTag html={ uncheckedSvg } />

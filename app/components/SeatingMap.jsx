@@ -3,6 +3,27 @@ import svgPanZoom from 'svg-pan-zoom'
 import SvgZoomControls from 'components/SvgZoomControls'
 import RailsTag from '@jho406/breezy/dist/RailsTag'
 
+const filterSectionsByMax = (sections, maximum) => {
+  return sections.map((section) => {
+    const {opacity, hidden} = section
+    let nextOpacity, nextHidden;
+
+    if((maximum || Infinity)>= section.price) {
+      nextOpacity = '1.0'
+      nextHidden = false
+    } else {
+      nextOpacity = '0.3'
+      nextHidden = true
+    }
+
+    if (opacity === nextOpacity && hidden === nextHidden) {
+      return section
+    } else  {
+      return {...section, hidden: nextHidden, opacity: nextOpacity}
+    }
+  })
+}
+
 const buildSectionElements = (pageKey, sections) => {
   return sections.map((section) => {
     const seatElements = section.seats.map((seat) => (
@@ -76,9 +97,10 @@ export default class extends React.Component {
       zoomControls,
       loadingIcon,
       loading,
+      maximum,
       pageKey,
     } = this.props
-    const sectionElements = buildSectionElements(pageKey, sections)
+    const sectionElements = buildSectionElements(pageKey, filterSectionsByMax(sections, maximum))
     const loadingClass = loading && 'is-loading'
 
     return(
