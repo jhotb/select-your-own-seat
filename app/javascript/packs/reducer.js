@@ -25,6 +25,7 @@ import {
 import {
   SHOW_LOADING,
   HIDE_LOADING,
+  SET_MAXIMUM
 } from './actions'
 import produce from "immer"
 
@@ -36,6 +37,16 @@ import produce from "immer"
 // this: `this.props.pageKey` then dispatch it in an action
 export const applicationPagesReducer = (state = {}, action) => {
   switch(action.type) {
+  case SET_MAXIMUM: {
+    const {
+      pageKey,
+      maximum
+    } = action.payload
+
+    return produce(state, draft => {
+      draft[pageKey].data.seatingMap.maximum = maximum
+    })
+  }
   case SHOW_LOADING: {
     const {pageKey} = action.payload
 
