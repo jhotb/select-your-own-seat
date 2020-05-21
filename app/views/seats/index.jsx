@@ -36,7 +36,7 @@ class SeatsIndex extends BaseScreen {
             className="syos-frame"
           >
             <div className="syos-frame__map">
-              <FloorSwitcher floors={floors}/>
+              <FloorSwitcher floors={floors} onFloorClick={this.visitWithLoading}/>
               <SeatingLegend />
               <SeatingMap {...seatingMap} />
             </div>

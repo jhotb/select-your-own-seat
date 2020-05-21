@@ -7,6 +7,14 @@ export default class extends React.Component {
     const visit = enhanceVisitWithBrowserBehavior(props.visit)
     this.enhancedVisit = visit.bind(this)
     this.remote = props.remote
+
+    this.visitWithLoading = (event) => {
+      event.preventDefault()
+      const { pageKey } = this.props
+      this.props.toggleMapLoading({pageKey})
+      const href = event.currentTarget.getAttribute('href')
+      this.enhancedVisit(href)
+    }
   }
 }
 

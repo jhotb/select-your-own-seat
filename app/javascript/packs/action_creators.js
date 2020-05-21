@@ -12,3 +12,15 @@
 //     }
 //   }
 // }
+import {
+  TOGGLE_MAP_LOADING,
+} from './actions'
+
+export function toggleMapLoading({pageKey}) {
+  return {
+    type: TOGGLE_MAP_LOADING,
+    payload: {
+      pageKey,
+    }
+  }
+}

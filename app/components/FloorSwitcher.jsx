@@ -5,6 +5,7 @@ export default class extends React.Component {
   render() {
     const {
       floors,
+      onFloorClick,
     } = this.props
 
     return (
@@ -20,7 +21,7 @@ export default class extends React.Component {
             {
               floors.map(({activeLink}) => (
                 <li className="syos-block-stack__item">
-                  <RailsTag html={activeLink} data-bz-visit={true} />
+                  <RailsTag html={activeLink} onClick={onFloorClick} />
                 </li>
               ))
             }
