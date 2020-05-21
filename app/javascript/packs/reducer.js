@@ -19,19 +19,39 @@
 //     return state
 //   }
 // }
-
 import {
   REHYDRATE,
 } from './actions'
+import {
+  SHOW_LOADING,
+  HIDE_LOADING,
+} from './actions'
+import produce from "immer"
 
 // The applicationPageReducer is for cross page reducers
-// Its common to add to this. You'll typically have to pass a pageKey to the 
+// Its common to add to this. You'll typically have to pass a pageKey to the
 // action payload to distinguish the current page
 //
 // The pageKey is passed through the props in your component. Access it like
 // this: `this.props.pageKey` then dispatch it in an action
 export const applicationPagesReducer = (state = {}, action) => {
   switch(action.type) {
+  case SHOW_LOADING: {
+    const {pageKey} = action.payload
+
+    return produce(state, draft => {
+      const { seatingMap } = draft[pageKey].data
+      seatingMap.loading = true
+    })
+  }
+  case HIDE_LOADING: {
+    const {pageKey} = action.payload
+
+    return produce(state, draft => {
+      const { seatingMap } = draft[pageKey].data
+      seatingMap.loading = false
+    })
+  }
   default:
     return state
   }
