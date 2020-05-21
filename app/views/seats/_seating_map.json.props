@@ -1,4 +1,5 @@
 json.floor floor.name
+json.loading false
 
 json.zoom_controls do
   json.zoom_in_button inline_svg_tag(

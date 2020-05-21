@@ -1,4 +1,5 @@
 import { visit, remote } from '@jho406/breezy/dist/action_creators'
+import { showLoading, hideLoading } from './action_creators'
 
 export function buildVisitAndRemote(ref, store) {
   const appRemote = (...args) => {
@@ -9,6 +10,9 @@ export function buildVisitAndRemote(ref, store) {
     // Do something before
     // e.g, show loading state, you can access the current pageKey
     // via store.getState().breezy.currentPageKey
+    const { currentPageKey } = store.getState().breezy
+    store.dispatch(showLoading({ pageKey: currentPageKey }))
+
     return store
       .dispatch(visit(...args))
       .then((meta) => {
@@ -32,6 +36,7 @@ export function buildVisitAndRemote(ref, store) {
         // Do something after
         // e.g, hide loading state, you can access the changed pageKey
         // via getState().breezy.currentPageKey
+        store.dispatch(hideLoading({ pageKey: currentPageKey }))
       })
       .catch((err) => {
         const response = err.response
