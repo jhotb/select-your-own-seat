@@ -12,6 +12,16 @@ import Layout from 'components/Layout'
 import * as applicationActionCreators from 'javascript/packs/action_creators'
 
 class SeatsIndex extends BaseScreen {
+  constructor(props) {
+    super(props)
+    this.handleFilter = this.handleFilter.bind(this)
+  }
+
+  handleFilter(event, maximum) {
+    this.props.setMaximum(this.props.pageKey, maximum)
+    event.stopPropagation()
+  }
+
   render () {
     const {
       venueName,
@@ -20,6 +30,7 @@ class SeatsIndex extends BaseScreen {
       cart,
       floors,
       filters,
+      filterSections,
     } = this.props
 
     return (
@@ -41,7 +52,7 @@ class SeatsIndex extends BaseScreen {
               <SeatingMap {...seatingMap} />
             </div>
             <div className="syos-frame__sidebar">
-              <SeatFilter {...filters} />
+              <SeatFilter {...filters} onFilter={this.handleFilter}/>
               <Cart cart={cart} />
             </div>
           </section>

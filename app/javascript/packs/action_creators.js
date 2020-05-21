@@ -14,7 +14,18 @@
 // }
 import {
   TOGGLE_MAP_LOADING,
+  SET_MAXIMUM,
 } from './actions'
+
+export function setMaximum(pageKey, maximum) {
+  return {
+    type: SET_MAXIMUM,
+    payload: {
+      pageKey,
+      maximum
+    }
+  }
+}
 
 export function toggleMapLoading({pageKey}) {
   return {

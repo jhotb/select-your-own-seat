@@ -22,6 +22,8 @@ json.loading_icon inline_svg_tag(
   class: "syos-icon syos-icon--xlarge syos-loader-overlay__loader",
 )
 
+json.maximum params.fetch(:maximum, nil)
+
 json.sections do
   json.array! sections do |section|
     if params.fetch(:maximum, Float::INFINITY).to_f >= section.price
@@ -31,6 +33,8 @@ json.sections do
       json.opacity "0.3"
       json.hidden true
     end
+
+    json.price section.price
 
     json.seats do
       json.array! section.seats do |seat|
