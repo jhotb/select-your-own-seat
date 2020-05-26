@@ -24,13 +24,14 @@ const filterSectionsByMax = (sections, maximum) => {
   })
 }
 
-const buildSectionElements = (sections) => {
+const buildSectionElements = (pageKey, sections) => {
   return sections.map((section) => {
     const seatElements = section.seats.map((seat) => (
       <a
         href={seat.venueFloorSeatPath}
         aria-label={seat.ariaLabel}
         data-bz-visit={true}
+        data-bz-placeholder={pageKey}
        >
         <use
           width="12px"
@@ -97,9 +98,10 @@ export default class extends React.Component {
       loadingIcon,
       loading,
       maximum,
-      onSeatClick
+      onSeatClick,
+      pageKey,
     } = this.props
-    const sectionElements = buildSectionElements(filterSectionsByMax(sections, maximum))
+    const sectionElements = buildSectionElements(pageKey, filterSectionsByMax(sections, maximum))
     const loadingClass = loading && 'is-loading'
 
     return(
