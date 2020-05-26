@@ -3,12 +3,14 @@ import svgPanZoom from 'svg-pan-zoom'
 import SvgZoomControls from 'components/SvgZoomControls'
 import RailsTag from '@jho406/breezy/dist/RailsTag'
 
-const buildSectionElements = (sections) => {
+const buildSectionElements = (pageKey, sections) => {
   return sections.map((section) => {
     const seatElements = section.seats.map((seat) => (
       <a
         href={seat.venueFloorSeatPath}
         aria-label={seat.ariaLabel}
+        data-bz-visit={true}
+        data-bz-placeholder={pageKey}
        >
         <use
           width="12px"
@@ -74,8 +76,9 @@ export default class extends React.Component {
       zoomControls,
       loadingIcon,
       loading,
+      pageKey,
     } = this.props
-    const sectionElements = buildSectionElements(sections)
+    const sectionElements = buildSectionElements(pageKey, sections)
     const loadingClass = loading && 'is-loading'
 
     return(
