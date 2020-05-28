@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2019_05_25_190937) do
   end
 
   create_table "floors", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
+    t.string "name", null: false
+    t.string "slug", null: false
     t.bigint "venue_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 2019_05_25_190937) do
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
+    t.string "name", null: false
+    t.string "slug", null: false
     t.bigint "floor_id", null: false
-    t.integer "price"
+    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["floor_id"], name: "index_sections_on_floor_id"
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2019_05_25_190937) do
   end
 
   create_table "venues", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
+    t.string "name", null: false
+    t.string "slug", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slug"], name: "index_venues_on_slug"
