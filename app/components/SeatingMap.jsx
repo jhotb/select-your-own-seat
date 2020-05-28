@@ -17,7 +17,14 @@ const buildSectionElements = (sections) => {
       </a>
     ))
 
-    return <g>{seatElements}</g>
+    return (
+      <g
+        opacity={section.opacity}
+        aria-hidden={section.hidden}
+      >
+        {seatElements}
+      </g>
+    )
   })
 }
 

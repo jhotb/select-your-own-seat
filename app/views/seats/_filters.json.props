@@ -1,0 +1,30 @@
+json.submission_path venue_floor_seats_path(venue, floor)
+
+json.form_props props_from_form_with(
+  url: venue_floor_seats_path(venue, floor),
+  method: :get,
+)
+
+prices = [5_00, 10_00, 15_00, nil].each_cons(2).to_a
+json.controls do
+  json.array! prices do |max_nmax|
+    maximum = max_nmax[0]
+    next_maximum = max_nmax[1]
+
+    json.maximum maximum
+    json.is_checked params[:maximum].to_i == maximum || [params[:maximum], next_maximum].none?
+    json.unchecked_svg inline_svg_tag(
+      "icons/circle.svg",
+      aria_hidden: true,
+      class: "syos-icon syos-tile-controls__icon syos-tile-controls__icon--unselected"
+    )
+
+    json.checked_svg inline_svg_tag(
+      "icons/check-circle.svg",
+      aria_hidden: true,
+      class: "syos-icon syos-tile-controls__icon syos-tile-controls__icon--selected"
+    )
+
+    json.price number_to_currency(maximum / 100.0)
+  end
+end

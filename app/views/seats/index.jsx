@@ -61,7 +61,7 @@ class SeatsIndex extends React.Component {
               <SeatingMap sections={sections} />
             </div>
             <div className="syos-frame__sidebar">
-              <SeatFilter filters={filters} />
+              <SeatFilter {...filters} />
               <Cart cart={cart} />
             </div>
           </section>
