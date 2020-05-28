@@ -4,11 +4,12 @@ import RailsTag from '@jho406/breezy/dist/RailsTag'
 export default class extends React.Component {
   render () {
     const {
-      filters,
+      controls,
+      formProps
     } = this.props
 
 
-    const controlElements = filters.map(({maximum, isChecked, uncheckedSvg, checkedSvg, price}) => {
+    const controlElements = controls.map(({maximum, isChecked, uncheckedSvg, checkedSvg, price}) => {
       return (
         <>
           <input
@@ -17,10 +18,9 @@ export default class extends React.Component {
             type="radio"
             name="maximum"
             value={maximum}
-            checked={isChecked}
-            readOnly
+            ref={React.createRef()}
           />
-          <label className="syos-tile-controls__control" htmlFor="filter-{maximum}">
+          <label className="syos-tile-controls__control" htmlFor={`filter-${maximum}`}>
             <RailsTag html={ uncheckedSvg } />
             <RailsTag html={ checkedSvg} />
             { price }
@@ -31,7 +31,7 @@ export default class extends React.Component {
 
 
     return (
-      <form>
+      <form {...formProps}>
         <fieldset className="syos-u-margin-bottom-6">
           <legend className="syos-u-margin-bottom-2 syos-inline-stack">
             <h2 className="syos-inline-stack__item">
