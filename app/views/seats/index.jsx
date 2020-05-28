@@ -2,6 +2,7 @@ import React from 'react'
 import {mapStateToProps, mapDispatchToProps} from '@jho406/breezy'
 import {connect} from 'react-redux'
 import SeatDialog from 'components/SeatDialog'
+import Cart from 'components/Cart'
 import Layout from 'components/Layout'
 import * as applicationActionCreators from 'javascript/packs/action_creators'
 
@@ -28,7 +29,8 @@ class SeatsIndex extends React.Component {
     const {
       venueName,
       sections,
-      seat
+      seat,
+      cart
     } = this.props
 
     const sectionElements = buildSectionElements(sections)
@@ -61,36 +63,7 @@ class SeatsIndex extends React.Component {
             </div>
 
             <div className="syos-frame__sidebar">
-              <div id="cart-summary">
-                <h2 className="syos-u-margin-bottom-2">
-                  Your seat selections
-                </h2>
-
-                <p className="syos-u-font-size-small syos-u-margin-bottom-2">
-                  Seats are not reserved until added to the cart.
-                </p>
-
-                <table className="syos-table">
-                  <thead>
-                    <tr>
-                      <th>
-                        Seat
-                      </th>
-
-                      <th className="syos-table__cell--numerals">
-                       Price
-                      </th>
-
-                      <th className="visually-hidden">
-                        Remove
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                  </tbody>
-                </table>
-              </div>
+              <Cart cart={cart} />
             </div>
           </section>
         </main>

@@ -10,6 +10,7 @@ export default class extends React.Component {
       price,
       show,
       closeSvg,
+      seatSelectionsButton,
     } = this.props
 
     if (!show) {
@@ -66,12 +67,8 @@ export default class extends React.Component {
               </p>
             </div>
 
-            <div className="syos-inline-stack__item">
-              <button
-                className="syos-button"
-              >
-                Select
-              </button>
+            <div className="syos-inline-stack__item" >
+              <RailsTag html={ seatSelectionsButton } />
             </div>
           </div>
         </footer>

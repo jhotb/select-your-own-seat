@@ -3,11 +3,19 @@ json.venue_name venue.name
 json.sections(partial: ['sections', locals: local_assigns]) do
 end
 
+json.cart(partial: ['cart', locals: local_assigns]) do
+end
+
 json.seat do
   json.show true
   json.section_name seat.section.name
   json.row_number seat.row_number
   json.price number_to_currency(seat.section.price / 100.0)
+  json.seat_selections_button button_to(
+    "Select",
+    seat_selections_path(seat),
+    class: "syos-button",
+  )
   json.close_svg inline_svg_tag(
     "icons/x-circle.svg",
     aria: true,
