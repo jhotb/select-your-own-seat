@@ -48,3 +48,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'props_template', path: '/Users/johny/Breezy/props_template'
 gem 'breezy', path: '/Users/johny/Breezy/breezy_rails'
+gem "inline_svg"
