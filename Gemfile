@@ -48,3 +48,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "props_template", "~> 0.14.0"
 gem "breezy", "~> 0.14.0"
+gem "inline_svg"
