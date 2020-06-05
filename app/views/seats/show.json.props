@@ -8,4 +8,10 @@ json.seat do
   json.section_name seat.section.name
   json.row_number seat.row_number
   json.price number_to_currency(seat.section.price / 100.0)
+  json.close_svg inline_svg_tag(
+    "icons/x-circle.svg",
+    aria: true,
+    class: "syos-icon syos-icon--large",
+    title: "Close modal",
+  )
 end
