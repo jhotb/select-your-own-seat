@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head>    <%= yield :initial_state %>
+
     <title>SelectYourOwnSeat</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +11,7 @@
   </head>
 
   <body>
+    <div id='app'></div>
     <%= yield %>
   </body>
 </html>
