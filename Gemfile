@@ -49,3 +49,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'breezy', '0.16'
 gem "inline_svg"
 gem 'active_link_to'
+gem 'react-rails'
+gem 'mini_racer'

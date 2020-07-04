@@ -4,5 +4,8 @@
   window.BREEZY_INITIAL_PAGE_STATE=<%= initial_state.html_safe %>;
 </script>
 
-<div id="app"></div>
+<%
+  props = "{\"initialPage\":#{initial_state}, \"href\":\"#{request.original_url}\"}"
+%>
+<%= react_component("application", props, prerender: true, id: :app) %>
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import svgPanZoom from 'svg-pan-zoom'
 import SvgZoomControls from 'components/SvgZoomControls'
 import RailsTag from '@jho406/breezy/dist/RailsTag'
 
@@ -63,6 +62,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
+    const svgPanZoom = require('svg-pan-zoom')
     this.map = svgPanZoom(this.svgRef.current, {
       center: true,
       fit: true,

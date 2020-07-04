@@ -3,7 +3,7 @@ import {combineReducers, createStore, applyMiddleware, compose} from 'redux'
 import reduceReducers from 'reduce-reducers'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { render } from 'react-dom'
+import { hydrate } from 'react-dom'
 import { createBrowserHistory, createMemoryHistory } from 'history'
 import { start } from '@jho406/breezy'
 import Nav from '@jho406/breezy/dist/NavComponent'
@@ -20,7 +20,7 @@ if(typeof window !== 'undefined' ) {
     const location = window.location
 
     if (appEl) {
-      render(
+      hydrate(
         <Application
           appEl={appEl}
           // The base url is an optional prefix to all calls made by the `visit`
